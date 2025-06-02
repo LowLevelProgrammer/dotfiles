@@ -4,6 +4,7 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     cpp = { "clang-format" },
+    cmake = { "gersemi" },
   },
 
   format_on_save = {
