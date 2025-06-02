@@ -78,5 +78,5 @@ map("n", "<F12>", "<cmd>DapStepOut<cr>", { desc = "Dap step out" })
 -- Git
 map("n", "<leader>ph", "<cmd>Gitsigns preview_hunk<cr>", { desc = "Preview hunk" })
 map("n", "<leader>rh", "<cmd>Gitsigns reset_hunk<cr>", { desc = "Reset hunk" })
-map("n", "[c", "<cmd>Gitsigns previous_hunk<cr>", { desc = "Previous hunk" })
+map("n", "[c", "<cmd>Gitsigns prev_hunk<cr>", { desc = "Previous hunk" })
 map("n", "]c", "<cmd>Gitsigns next_hunk<cr>", { desc = "Next hunk" })

@@ -1,0 +1,5 @@
+# Ignore everything in the tmux directory
+tmux/.config/tmux/plugins/**
+
+# But do NOT ignore tmux.conf
+!.config/tmux/tmux.conf
