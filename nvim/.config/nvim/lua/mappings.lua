@@ -80,3 +80,20 @@ map("n", "<leader>ph", "<cmd>Gitsigns preview_hunk<cr>", { desc = "Preview hunk"
 map("n", "<leader>rh", "<cmd>Gitsigns reset_hunk<cr>", { desc = "Reset hunk" })
 map("n", "[c", "<cmd>Gitsigns prev_hunk<cr>", { desc = "Previous hunk" })
 map("n", "]c", "<cmd>Gitsigns next_hunk<cr>", { desc = "Next hunk" })
+
+-- Hydra
+
+local Hydra = require "hydra"
+
+Hydra {
+  name = "Resize Windows",
+  mode = "n",
+  body = "<leader>r",
+  heads = {
+    { "h", "<C-w><", { desc = "shrink window horizontally" } },
+    { "l", "<C-w>>", { desc = "expand window horizontally" } },
+    { "j", "<C-w>-", { desc = "shrink window vertically" } },
+    { "k", "<C-w>+", { desc = "expand window vertically" } },
+    { "q", nil, { exit = true, desc = "quit" } },
+  },
+}
