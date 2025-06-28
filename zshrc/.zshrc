@@ -61,6 +61,7 @@ alias vio='nvim $(fzf -m --preview="bat --color=always {}")'
 
 # Exports
 export PATH="$HOME/bin:$PATH"
+export EDITOR=nvim
 
 # zsh-autocomplete
 zstyle ":completion:*" menu select
