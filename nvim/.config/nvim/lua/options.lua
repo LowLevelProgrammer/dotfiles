@@ -1,22 +1,67 @@
-require "nvchad.options"
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.cursorline = true
+vim.opt.termguicolors = true
 
--- add yours here!
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+vim.opt.expandtab = true
+vim.opt.smartindent = true
 
-local o = vim.o
-o.relativenumber = true
--- o.cursorlineopt ='both' -- to enable cursorline!
+vim.g.mapleader = " "
 
-vim.g.cmake_link_compile_commands = 1
+vim.keymap.set({ "n", "i" }, "<C-s>", ":w<CR>", { desc = "Save file" })
 
-local nvim_tree = require "nvim-tree"
+-- -- Window navigation
+-- vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
+-- vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
--- Get the current setup
-local config = nvim_tree.config or {}
+-- Normal mode window movement
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move Left" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move Right" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move Down" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move Up" })
 
--- Modify only the `git_ignored` filter
-config.filters = vim.tbl_deep_extend("force", config.filters or {}, {
-  git_ignored = false, -- Show Git-ignored files by default
+vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true })
+vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true })
+vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { silent = true })
+
+-- Diagnostic configuration
+vim.diagnostic.config({
+	virtual_text = {
+		prefix = "●",
+		spacing = 2,
+	},
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = " ",
+			[vim.diagnostic.severity.WARN] = " ",
+			[vim.diagnostic.severity.HINT] = "󰠠 ",
+			[vim.diagnostic.severity.INFO] = " ",
+		},
+	},
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
+	float = {
+		border = "rounded",
+	},
 })
 
--- Apply the updated config without overriding everything
-nvim_tree.setup(config)
+-- Cmake
+vim.g.cmake_link_compile_commands = 1
+
+-- Sign/gutter area
+vim.opt.signcolumn = "yes:2"
+
+-- // Withou plugin
+-- vim.keymap.set("n", "<leader>x", function()
+-- 	require("bufferline").cycle(1)
+-- 	vim.cmd("bdelete #")
+-- end, { desc = "Close current buffer cleanly" })
+
+-- // With plugin
+vim.keymap.set("n", "<leader>x", function()
+	require("bufdelete").bufdelete(0, true)
+end, { desc = "Close buffer" })
