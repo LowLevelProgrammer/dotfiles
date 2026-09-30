@@ -11,7 +11,7 @@ vim.opt.smartindent = true
 
 vim.g.mapleader = " "
 
-vim.keymap.set({ "n", "i" }, "<C-s>", ":w<CR>", { desc = "Save file" })
+vim.keymap.set({ "n" }, "<C-s>", ":w<CR>", { desc = "Save file" })
 
 -- -- Window navigation
 -- vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
@@ -27,26 +27,29 @@ vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true })
 vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true })
 vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { silent = true })
 
+-- Competitive
+
+
 -- Diagnostic configuration
 vim.diagnostic.config({
-	virtual_text = {
-		prefix = "●",
-		spacing = 2,
-	},
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = " ",
-			[vim.diagnostic.severity.WARN] = " ",
-			[vim.diagnostic.severity.HINT] = "󰠠 ",
-			[vim.diagnostic.severity.INFO] = " ",
-		},
-	},
-	underline = true,
-	update_in_insert = false,
-	severity_sort = true,
-	float = {
-		border = "rounded",
-	},
+  virtual_text = {
+    prefix = "●",
+    spacing = 2,
+  },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = " ",
+      [vim.diagnostic.severity.WARN] = " ",
+      [vim.diagnostic.severity.HINT] = "󰠠 ",
+      [vim.diagnostic.severity.INFO] = " ",
+    },
+  },
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    border = "rounded",
+  },
 })
 
 -- Cmake
@@ -63,5 +66,5 @@ vim.opt.signcolumn = "yes:2"
 
 -- // With plugin
 vim.keymap.set("n", "<leader>x", function()
-	require("bufdelete").bufdelete(0, true)
+  require("bufdelete").bufdelete(0, true)
 end, { desc = "Close buffer" })
